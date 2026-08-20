@@ -19,11 +19,12 @@
       <span>SellCheck <span class="tag">KE</span></span>
     </a>
     <nav class="nav-links">
-      <a href="#home" data-nav="home">How it works</a>
-      <a href="#submit" data-nav="submit">Submit an item</a>
-      <a href="#check" data-nav="check">Check a submission</a>
-      <a href="#admin" data-nav="admin">Admin</a>
-    </nav>
+  <a href="#home" data-nav="home">How it works</a>
+  <a href="#submit" data-nav="submit">Submit an item</a>
+  <a href="#buyer" data-nav="buyer">I'm Looking for an Item</a>
+  <a href="#check" data-nav="check">Check a submission</a>
+  <a href="#admin" data-nav="admin">Admin</a>
+</nav>
     <div class="nav-cta">
       <a href="#check" class="btn btn-secondary btn-sm" data-nav="check">Check a submission</a>
       <a href="#submit" class="btn btn-primary btn-sm" data-nav="submit">Submit an item</a>
@@ -186,17 +187,295 @@
           <div class="ref-display" id="successRef">SC-KE-2026-00000</div>
           <p class="hint">Share the reference number, or the private review link below, with your buyer.</p>
           <div class="link-box"><span id="successLink">—</span></div>
-          <div class="hero-actions" style="justify-content:center;margin-top:22px;">
-            <button class="btn btn-primary" id="copyLinkBtn" type="button">Copy review link</button>
-            <a href="#home" class="btn btn-secondary" data-nav="home">Back to home</a>
-          </div>
+   <div class="hero-actions">
+  <a href="#submit" class="btn btn-primary" data-nav="submit">Submit an item</a>
+  <a href="#buyer" class="btn btn-outline" data-nav="buyer">I'm Looking for an Item</a>
+  <a href="#check" class="btn btn-outline" data-nav="check">Check a submission</a>
+</div>
         </div>
       </div>
 
     </div>
   </section>
 </section>
+<!-- ============================= BUYER REQUEST VIEW ============================= -->
+<section id="view-buyer" class="view hidden">
 
+  <section class="on-navy" style="padding:40px 0;">
+    <div class="container">
+      <span class="eyebrow">Buyer / Customer Request</span>
+      <h2 style="color:#fff;margin-bottom:4px;">
+        Tell us what you're looking for
+      </h2>
+      <p style="color:var(--sky);margin:0;">
+        Register your interest and SellCheck KE can help identify matching items.
+      </p>
+    </div>
+  </section>
+
+  <section class="on-paper" style="padding-top:36px;">
+    <div class="container section-narrow">
+
+      <div class="card">
+
+        <div class="notice notice-blue" style="margin-bottom:24px;">
+          <span class="notice-icon">i</span>
+          <p>
+            Provide your details and describe the item you are looking for.
+            Your request will be reviewed by the SellCheck KE administrator.
+          </p>
+        </div>
+
+        <form id="buyerRequestForm" novalidate>
+
+          <fieldset>
+            <legend>Your information</legend>
+
+            <div class="field-grid">
+
+              <div class="field">
+                <label for="buyerName">
+                  Full name
+                </label>
+                <input
+                  type="text"
+                  id="buyerName"
+                  name="buyerName"
+                  placeholder="e.g. Collins Omondi"
+                  required
+                >
+              </div>
+
+              <div class="field">
+                <label for="buyerPhone">
+                  WhatsApp number
+                </label>
+                <input
+                  type="tel"
+                  id="buyerPhone"
+                  name="buyerPhone"
+                  placeholder="e.g. 0712345678"
+                  required
+                >
+              </div>
+
+              <div class="field">
+                <label for="buyerEmail">
+                  Email <span class="opt">(optional)</span>
+                </label>
+                <input
+                  type="email"
+                  id="buyerEmail"
+                  name="buyerEmail"
+                  placeholder="you@example.com"
+                >
+              </div>
+
+              <div class="field">
+                <label for="buyerCounty">
+                  County
+                </label>
+                <input
+                  type="text"
+                  id="buyerCounty"
+                  name="buyerCounty"
+                  placeholder="e.g. Nairobi"
+                  required
+                >
+              </div>
+
+              <div class="field">
+                <label for="buyerTown">
+                  Town / location
+                </label>
+                <input
+                  type="text"
+                  id="buyerTown"
+                  name="buyerTown"
+                  placeholder="e.g. Westlands"
+                  required
+                >
+              </div>
+
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>What are you looking for?</legend>
+
+            <div class="field-grid">
+
+              <div class="field">
+                <label for="buyerCategory">
+                  Category
+                </label>
+
+                <select id="buyerCategory" name="buyerCategory" required>
+                  <option value="">Select category...</option>
+                  <option value="motorcycle">Motorcycle</option>
+                  <option value="car">Car</option>
+                  <option value="phone">Phone</option>
+                  <option value="laptop">Laptop / Computer</option>
+                  <option value="tv_electronics">TV / Electronics</option>
+                  <option value="furniture">Furniture</option>
+                  <option value="machinery">Machinery</option>
+                  <option value="farm_equipment">Farm Equipment</option>
+                  <option value="property_land">Property / Land</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="buyerItem">
+                  Item wanted
+                </label>
+
+                <input
+                  type="text"
+                  id="buyerItem"
+                  name="buyerItem"
+                  placeholder="e.g. Honda CBR 150"
+                  required
+                >
+              </div>
+
+              <div class="field">
+                <label for="buyerBrand">
+                  Preferred brand
+                  <span class="opt">(optional)</span>
+                </label>
+
+                <input
+                  type="text"
+                  id="buyerBrand"
+                  name="buyerBrand"
+                  placeholder="e.g. Honda"
+                >
+              </div>
+
+              <div class="field">
+                <label for="buyerModel">
+                  Preferred model
+                  <span class="opt">(optional)</span>
+                </label>
+
+                <input
+                  type="text"
+                  id="buyerModel"
+                  name="buyerModel"
+                  placeholder="e.g. CBR 150"
+                >
+              </div>
+
+              <div class="field">
+                <label for="buyerBudget">
+                  Maximum budget (KSh)
+                </label>
+
+                <input
+                  type="number"
+                  id="buyerBudget"
+                  name="buyerBudget"
+                  placeholder="e.g. 150000"
+                  required
+                >
+              </div>
+
+              <div class="field">
+                <label for="buyerCondition">
+                  Preferred condition
+                </label>
+
+                <select id="buyerCondition" name="buyerCondition">
+                  <option value="">Any condition</option>
+                  <option>Excellent</option>
+                  <option>Good</option>
+                  <option>Fair</option>
+                  <option>Needs attention</option>
+                </select>
+              </div>
+
+              <div class="field full">
+                <label for="buyerRequirements">
+                  Additional requirements
+                  <span class="opt">(optional)</span>
+                </label>
+
+                <textarea
+                  id="buyerRequirements"
+                  name="buyerRequirements"
+                  placeholder="Describe anything else you require..."
+                ></textarea>
+              </div>
+
+            </div>
+          </fieldset>
+
+          <div class="notice notice-amber" style="margin-bottom:20px;">
+            <span class="notice-icon">!</span>
+            <p>
+              SellCheck KE will use this information to identify potentially
+              matching listings. A match does not guarantee availability,
+              ownership, condition, authenticity or suitability.
+            </p>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary btn-block"
+            id="buyerRequestBtn"
+          >
+            Submit my request
+          </button>
+
+          <p
+            class="error-msg"
+            id="buyerRequestError"
+            style="margin-top:12px;"
+          ></p>
+
+        </form>
+
+      </div>
+
+      <div id="buyerSuccess" class="hidden">
+        <div class="success-wrap card">
+
+          <div class="success-icon">&#10003;</div>
+
+          <h2>Request received.</h2>
+
+          <p>
+            Your buyer request has been received by SellCheck KE.
+            Keep your reference number.
+          </p>
+
+          <div class="ref-display" id="buyerReference">
+            BUY-KE-2026-00000
+          </div>
+
+          <p class="hint">
+            SellCheck KE can use your request to identify potentially
+            matching items.
+          </p>
+
+          <div class="hero-actions" style="justify-content:center;margin-top:22px;">
+            <a
+              href="#home"
+              class="btn btn-secondary"
+              data-nav="home"
+            >
+              Back to home
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</section>
 <!-- ============================= CHECK SUBMISSION VIEW ============================= -->
 <section id="view-check" class="view hidden">
   <section class="on-navy" style="padding:40px 0;">
@@ -305,11 +584,12 @@
       </div>
       <div>
         <h4>Platform</h4>
-        <ul>
-          <li><a href="#submit" data-nav="submit">Submit an item</a></li>
-          <li><a href="#check" data-nav="check">Check a submission</a></li>
-          <li><a href="#admin" data-nav="admin">Admin dashboard</a></li>
-        </ul>
+      <ul>
+  <li><a href="#submit" data-nav="submit">Submit an item</a></li>
+  <li><a href="#buyer" data-nav="buyer">I'm Looking for an Item</a></li>
+  <li><a href="#check" data-nav="check">Check a submission</a></li>
+  <li><a href="#admin" data-nav="admin">Admin dashboard</a></li>
+</ul>
       </div>
       <div>
         <h4>Legal</h4>
