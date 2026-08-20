@@ -8,7 +8,7 @@
    Instructions: see README.md, section "Google Apps Script setup".
    -------------------------------------------------------------------------- */
 const CONFIG = {
-  APPS_SCRIPT_URL: "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE",
+  APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbybo8-8MsNIrmYcOd4z2cYg67w6q9yW2YEjgkWMAudxSvI90mKJ_Sj24fZl40n14sfa/exec",
 };
 
 /* --------------------------------------------------------------------------
