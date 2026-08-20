@@ -830,13 +830,27 @@ function renderAdminTable() {
           ${statuses.map(st => `<option value="${st}" ${((s.status || "New") === st) ? "selected" : ""}>${st}</option>`).join("")}
         </select>
       </td>
-      <td>${s.photo_count ? s.photo_count + " linked" : "—"}</td>
+<td>
+  ${s.photo_count ? s.photo_count + " linked" : "—"}
+  <br>
+  <button
+    type="button"
+    class="btn btn-primary btn-sm whatsapp-btn"
+    data-ref="${escapeHTML(s.reference || "")}">
+    WhatsApp
+  </button>
+</td>
     </tr>
   `).join("");
 
   body.querySelectorAll(".status-select").forEach(sel => {
     sel.addEventListener("change", () => updateStatus(sel.getAttribute("data-ref"), sel.value));
   });
+  body.querySelectorAll(".whatsapp-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    sendSubmissionToWhatsApp(btn.getAttribute("data-ref"));
+  });
+});
 }
 
 async function updateStatus(ref, status) {
@@ -861,4 +875,66 @@ async function postToBackendRaw(payload) {
     body: JSON.stringify(payload),
   });
   return res.json();
+}
+/* ============================================================
+   WHATSAPP SHARING
+   ============================================================ */
+
+function sendSubmissionToWhatsApp(ref) {
+  const submission = adminData.find(s => s.reference === ref);
+
+  if (!submission) {
+    showToast("Submission not found.", true);
+    return;
+  }
+
+  const phone = prompt(
+    "Enter the WhatsApp number of the buyer/seller.\n\n" +
+    "Example: 254712345678"
+  );
+
+  if (!phone) return;
+
+  const cleanPhone = phone.replace(/\D/g, "");
+
+  if (cleanPhone.length < 10) {
+    showToast("Please enter a valid WhatsApp number.", true);
+    return;
+  }
+
+  const message =
+`SELLCHECK KE
+
+Submission Reference: ${submission.reference || "—"}
+
+Item: ${submission.item_title || "—"}
+Category: ${submission.category_name || submission.category || "—"}
+Price: ${submission.asking_price ? "KSh " + Number(submission.asking_price).toLocaleString() : "—"}
+Location: ${[submission.location_town, submission.location_county].filter(Boolean).join(", ") || "—"}
+Condition: ${submission.condition || "—"}
+
+Description:
+${submission.description || "—"}
+
+Known defects:
+${submission.known_defects || "—"}
+
+Information completeness:
+${submission.completeness || 0}%
+
+Status:
+${submission.status || "New"}
+
+Please review the information carefully and arrange independent verification before making any payment.
+
+SellCheck KE
+Pre-screening only — not a verification authority.`;
+
+  const whatsappURL =
+    "https://wa.me/" +
+    cleanPhone +
+    "?text=" +
+    encodeURIComponent(message);
+
+  window.open(whatsappURL, "_blank");
 }
