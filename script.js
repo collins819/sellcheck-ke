@@ -278,10 +278,26 @@ const CATEGORIES = [
 
 const SELLER_FIELDS = [
   field("seller_name", "Full name", "text", { required: true }),
-  field("seller_phone", "Phone number", "tel", { required: true, placeholder: "07XX XXX XXX" }),
+  field("seller_phone", "Phone number", "tel", {
+    required: true,
+    placeholder: "07XX XXX XXX"
+  }),
   field("seller_email", "Email", "email", {}),
   field("seller_county", "County", "text", { required: true }),
   field("seller_town", "Town / location", "text", { required: true }),
+];
+
+const BUYER_FIELDS = [
+  field("buyer_name", "Buyer name", "text", {
+    placeholder: "Full name"
+  }),
+  field("buyer_phone", "Buyer WhatsApp number", "tel", {
+    required: true,
+    placeholder: "07XX XXX XXX"
+  }),
+  field("buyer_email", "Buyer email", "email", {}),
+  field("buyer_county", "Buyer county", "text", {}),
+  field("buyer_town", "Buyer town / location", "text", {}),
 ];
 
 function categoryById(id) { return CATEGORIES.find(c => c.id === id); }
@@ -424,6 +440,11 @@ let FORM_STEPS = [];
 function buildFormSteps() {
   const cat = state.selectedCategory;
   FORM_STEPS = [];
+  FORM_STEPS.push({
+  type: "buyer",
+  title: "Buyer information (optional)",
+  fields: BUYER_FIELDS
+});
   FORM_STEPS.push({ type: "seller", title: "Seller information", fields: SELLER_FIELDS });
   cat.sections.forEach(sec => FORM_STEPS.push({ type: "fields", title: sec.title, fields: sec.fields }));
   FORM_STEPS.push({ type: "photos", title: "Photos & documents" });
@@ -493,7 +514,7 @@ function renderStep() {
 }
 
 function restoreStepValues(step) {
-  if (step.type === "seller" || step.type === "fields") {
+  if (step.type === "seller" ||step.type === "buyer" || step.type === "fields") {
     step.fields.forEach(f => {
       const el = document.getElementById("f_" + f.id);
       if (el && state.formData[f.id] !== undefined) el.value = state.formData[f.id];
