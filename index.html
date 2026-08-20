@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SellCheck KE — Know what you're buying before you pay</title>
+<meta name="description" content="SellCheck KE helps buyers collect and review information about second-hand items before arranging an inspection or purchase.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============================= HEADER ============================= -->
+<header class="site-header">
+  <div class="container nav" id="mainNav">
+    <a href="#home" class="logo" data-nav="home">
+      <span class="mark">SC</span>
+      <span>SellCheck <span class="tag">KE</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#home" data-nav="home">How it works</a>
+      <a href="#submit" data-nav="submit">Submit an item</a>
+      <a href="#check" data-nav="check">Check a submission</a>
+      <a href="#admin" data-nav="admin">Admin</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#check" class="btn btn-secondary btn-sm" data-nav="check">Check a submission</a>
+      <a href="#submit" class="btn btn-primary btn-sm" data-nav="submit">Submit an item</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================= HOME VIEW ============================= -->
+<section id="view-home" class="view">
+
+  <div class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> Pre-screening platform for Kenyan buyers &amp; sellers</span>
+        <h1>Know what you're buying before you pay.</h1>
+        <p class="hero-sub">SellCheck KE helps buyers collect and review important information about second-hand items before arranging an inspection or purchase.</p>
+        <div class="hero-actions">
+          <a href="#submit" class="btn btn-primary" data-nav="submit">Submit an item</a>
+          <a href="#check" class="btn btn-outline" data-nav="check">Check a submission</a>
+        </div>
+        <div class="hero-trust">
+          <span><strong>10</strong> item categories</span>
+          <span><strong>Free</strong> reference number for every submission</span>
+          <span><strong>No</strong> automatic authenticity claims</span>
+        </div>
+      </div>
+      <div class="stub" aria-hidden="true">
+        <div class="stub-row">
+          <span class="stub-label">Reference</span>
+          <span class="stub-ref">SC-KE-2026-00147</span>
+        </div>
+        <div class="stub-row">
+          <span class="stub-label">Category</span>
+          <span class="stub-value">Motorcycle</span>
+        </div>
+        <div class="stub-row">
+          <span class="stub-label">Information completeness</span>
+          <span class="badge badge-good">82%</span>
+        </div>
+        <div class="stub-row">
+          <span class="stub-label">Status</span>
+          <span class="badge badge-info">Under review</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="on-white">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2>Four steps, before any money changes hands</h2>
+        <p>SellCheck KE is an information collection and pre-screening tool — not a verification authority. It structures what a seller discloses so a buyer can review it before arranging a physical inspection.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Seller provides item information</h3>
+          <p>Details, condition, history and photo links, organised by category.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>SellCheck generates a reference</h3>
+          <p>A unique reference number such as SC-KE-2026-00001 is issued instantly.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Buyer reviews the submission</h3>
+          <p>The buyer looks up the reference and reads what the seller disclosed.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h3>Buyer arranges verification</h3>
+          <p>Physical inspection, ownership checks and professional verification follow — before purchase.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-paper">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">What SellCheck is not</span>
+        <h2>An information stub, not a guarantee</h2>
+      </div>
+      <div class="notice notice-amber">
+        <span class="notice-icon">!</span>
+        <p><strong>Important notice.</strong> SellCheck KE collects information provided by sellers to help buyers conduct a preliminary review before arranging an inspection or purchase. Submission of information does not confirm ownership, authenticity, roadworthiness, legal status, condition, or value of an item. Buyers should independently verify documents and inspect items before making payment. For vehicles and motorcycles, arrange independent mechanical and ownership verification. For property, conduct an official land registry search and use qualified legal assistance.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-white">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Categories</span>
+        <h2>Built for how things actually get resold in Kenya</h2>
+        <p>Choose what you're selling to start a submission — the form adapts to the category.</p>
+      </div>
+      <div class="cat-grid" id="homeCatPreview"></div>
+    </div>
+  </section>
+
+</section>
+
+<!-- ============================= SUBMIT VIEW ============================= -->
+<section id="view-submit" class="view hidden">
+  <section class="on-navy" style="padding:40px 0;">
+    <div class="container">
+      <span class="eyebrow">Submit an item</span>
+      <h2 style="color:#fff;margin-bottom:4px;">What are you selling?</h2>
+      <p style="color:var(--sky);margin:0;">Pick a category to load the right form. You can change this at any time before submitting.</p>
+    </div>
+  </section>
+
+  <section class="on-paper" style="padding-top:36px;">
+    <div class="container">
+
+      <!-- Category picker step -->
+      <div id="categoryStep">
+        <div class="cat-grid" id="categoryGrid"></div>
+      </div>
+
+      <!-- Dynamic form step -->
+      <div id="formStep" class="hidden">
+        <div class="form-shell">
+          <button type="button" class="btn btn-secondary btn-sm" id="changeCategoryBtn" style="margin-bottom:20px;">&larr; Change category</button>
+
+          <div class="form-progress">
+            <span id="progressLabel">Step 1 of 4</span>
+            <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+            <span id="progressPct">0%</span>
+          </div>
+
+          <div class="meter-wrap">
+            <div class="meter-ring" id="meterRing" style="--pct:0;"><span id="meterPct">0%</span></div>
+            <div class="meter-text">
+              <strong>Information completeness</strong>
+              <span>How much requested information you've provided — not a genuineness or safety rating.</span>
+            </div>
+          </div>
+
+          <form id="itemForm" novalidate>
+            <div id="formSections"></div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Success step -->
+      <div id="successStep" class="hidden">
+        <div class="success-wrap card">
+          <div class="success-icon">&#10003;</div>
+          <h2>Your SellCheck submission has been received.</h2>
+          <p>Keep this reference — you'll need it to check status or share with a buyer.</p>
+          <div class="ref-display" id="successRef">SC-KE-2026-00000</div>
+          <p class="hint">Share the reference number, or the private review link below, with your buyer.</p>
+          <div class="link-box"><span id="successLink">—</span></div>
+          <div class="hero-actions" style="justify-content:center;margin-top:22px;">
+            <button class="btn btn-primary" id="copyLinkBtn" type="button">Copy review link</button>
+            <a href="#home" class="btn btn-secondary" data-nav="home">Back to home</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</section>
+
+<!-- ============================= CHECK SUBMISSION VIEW ============================= -->
+<section id="view-check" class="view hidden">
+  <section class="on-navy" style="padding:40px 0;">
+    <div class="container">
+      <span class="eyebrow">Check a submission</span>
+      <h2 style="color:#fff;margin-bottom:4px;">Check a SellCheck submission</h2>
+      <p style="color:var(--sky);margin:0;">Enter the reference number the seller gave you.</p>
+    </div>
+  </section>
+  <section class="on-paper" style="padding-top:36px;">
+    <div class="container section-narrow">
+      <div class="card" style="margin-bottom:24px;">
+        <form id="lookupForm" novalidate>
+          <div class="field full">
+            <label for="lookupRef">Reference number</label>
+            <input type="text" id="lookupRef" placeholder="SC-KE-2026-00001" autocomplete="off">
+            <p class="error-msg" id="lookupError">Enter a valid reference number, e.g. SC-KE-2026-00001.</p>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" id="lookupBtn">Check submission</button>
+        </form>
+      </div>
+
+      <div id="lookupResultWrap" class="hidden">
+        <div class="card lookup-result" id="lookupResult"></div>
+      </div>
+
+      <div class="notice notice-blue" style="margin-top:20px;">
+        <span class="notice-icon">i</span>
+        <p>Only information appropriate for a buyer is shown here. Full seller contact details are shared once you begin arranging an inspection.</p>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============================= ADMIN VIEW ============================= -->
+<section id="view-admin" class="view hidden">
+  <section class="on-navy" style="padding:40px 0;">
+    <div class="container">
+      <span class="eyebrow">Admin</span>
+      <h2 style="color:#fff;margin-bottom:4px;">Submission dashboard</h2>
+      <p style="color:var(--sky);margin:0;">For SellCheck KE administrators only.</p>
+    </div>
+  </section>
+  <section class="on-paper" style="padding-top:36px;">
+    <div class="container">
+
+      <div id="adminLoginStep">
+        <div class="card section-narrow">
+          <h3>Admin sign-in</h3>
+          <p>Enter the admin password configured in the Apps Script backend.</p>
+          <div class="field full">
+            <label for="adminPassword">Admin password</label>
+            <input type="text" id="adminPassword" autocomplete="off">
+          </div>
+          <button class="btn btn-primary btn-block" id="adminLoginBtn">Sign in</button>
+          <p class="error-msg" id="adminLoginError">Incorrect password, or the backend URL isn't configured yet.</p>
+        </div>
+      </div>
+
+      <div id="adminDashboardStep" class="hidden">
+        <div class="admin-toolbar">
+          <input type="text" id="adminSearch" placeholder="Search reference number...">
+          <select id="adminCategoryFilter">
+            <option value="">All categories</option>
+          </select>
+          <select id="adminStatusFilter">
+            <option value="">All statuses</option>
+            <option>New</option>
+            <option>Under Review</option>
+            <option>Inspection Pending</option>
+            <option>Inspected</option>
+            <option>Closed</option>
+          </select>
+          <input type="text" id="adminLocationFilter" placeholder="Filter by location/county...">
+          <button class="btn btn-secondary btn-sm" id="adminRefreshBtn">Refresh</button>
+          <button class="btn btn-secondary btn-sm" id="adminLogoutBtn">Sign out</button>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="admin-table" id="adminTable">
+            <thead>
+              <tr>
+                <th>Reference</th><th>Category</th><th>Title</th><th>Price (KSh)</th>
+                <th>Location</th><th>Submitted</th><th>Status</th><th>Photos</th>
+              </tr>
+            </thead>
+            <tbody id="adminTableBody">
+              <tr><td colspan="8">Loading submissions…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</section>
+
+</main>
+
+<!-- ============================= FOOTER ============================= -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>SellCheck KE</h4>
+        <p>An information collection and pre-screening platform for buyers and sellers of second-hand items in Kenya. SellCheck does not verify ownership, authenticity, or legal status.</p>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#submit" data-nav="submit">Submit an item</a></li>
+          <li><a href="#check" data-nav="check">Check a submission</a></li>
+          <li><a href="#admin" data-nav="admin">Admin dashboard</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#" id="footerPrivacyLink">Privacy notice</a></li>
+          <li><a href="#" id="footerTermsLink">Terms &amp; disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 SellCheck KE. Pre-screening only — not an official verification service.</span>
+      <span id="apiStatusFooter">Backend: not configured</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================= PRIVACY / TERMS (simple modal-less panels) ============================= -->
+<section class="on-white hidden" id="view-privacy">
+  <div class="container section-narrow" style="padding:60px 0;">
+    <h2>Privacy notice</h2>
+    <p>SellCheck KE collects only the information needed to generate a pre-screening submission: seller contact details, item information, and photo/document links you choose to provide. We do not collect passwords, PINs, bank details, or national ID uploads. Contact details are shown to administrators and, where appropriate, to a genuine buyer arranging an inspection — not published openly. Data is stored in a Google Sheet accessible only to the platform administrator. You may request removal of your submission by contacting the administrator with your reference number.</p>
+    <a href="#home" class="btn btn-secondary" data-nav="home">&larr; Back</a>
+  </div>
+</section>
+<section class="on-paper hidden" id="view-terms">
+  <div class="container section-narrow" style="padding:60px 0;">
+    <h2>Terms &amp; disclaimer</h2>
+    <p>SellCheck KE is an information collection and pre-screening platform. It is not a government agency, licensing body, escrow service, or verification authority. Submission of information by a seller does not confirm ownership, authenticity, roadworthiness, legal status, condition, or value of any item. The "Information completeness" score reflects only how much requested information was provided — never authenticity or safety. Buyers are responsible for independently verifying documents, inspecting items in person, and, for vehicles, motorcycles and property, obtaining professional or legal verification before making any payment. SellCheck KE is not liable for losses arising from transactions between buyers and sellers.</p>
+    <a href="#home" class="btn btn-secondary" data-nav="home">&larr; Back</a>
+  </div>
+</section>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
